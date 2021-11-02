@@ -36,7 +36,7 @@ body {
 }
 
 .form {
-    width: 250px;
+    width: 300px;
 
     &__group {
         display: flex;
@@ -62,6 +62,10 @@ body {
         width: 50%;
     }
 
+    &__division:first-child {
+        margin-right: 1rem;
+    }
+
     &__label {
         display: block;
     }
@@ -74,7 +78,7 @@ body {
         width: 100%;
     }
 
-    &__input--half {
-        width: 50%;
+    &__submit {
+        
     }
 }
