@@ -12,8 +12,10 @@
     <form class="form">
         
         <!-- Departure location -->
-        <div class="form__group">
-          <svg class="form__icon" viewBox="0 0 24 24"><path d="M12.77,20.14v1.53H2.55V20.14ZM22.5,8.4,7.59,13.93A3.11,3.11,0,0,1,4.11,13L1,9.4l3.43-1L6.5,9.74l3-.9L5.24,3.38l3.52-1L15,7l2.55-1c1.91-.68,3.53-.86,4.83.7l.39.46a.76.76,0,0,1-.07,1.08.68.68,0,0,1-.26.15Z"/></svg>
+        <section class="form__group">
+          <div class="form__icon">
+            <svg  viewBox="0 0 24 24"><path d="M12.77,20.14v1.53H2.55V20.14ZM22.5,8.4,7.59,13.93A3.11,3.11,0,0,1,4.11,13L1,9.4l3.43-1L6.5,9.74l3-.9L5.24,3.38l3.52-1L15,7l2.55-1c1.91-.68,3.53-.86,4.83.7l.39.46a.76.76,0,0,1-.07,1.08.68.68,0,0,1-.26.15Z"/></svg>
+          </div>
           <div class="group__container">
             <label for="departure" class="form__label">Departure</label>
             <select id="departure" class="form__input form__input--full">
@@ -25,11 +27,13 @@
                 <option value="Buenos Aires">Buenos Aires</option>
             </select>
           </div>
-        </div>
+        </section>
 
         <!-- Arrival location -->
-        <div class="form__group">
-          <svg class="form__icon" viewBox="0 0 24 24"><path d="M23,21.35V23H12V21.35ZM19.65,17,3.45,11.59a3.34,3.34,0,0,1-2.3-3.12L1,3.2,4.61,4.65l.82,2.52,3.15,1.3L8.63,1,12.3,2.48l2.13,8.11,2.81.91c2.05.72,3.45,1.82,3.5,4v.66A.81.81,0,0,1,20,17a.93.93,0,0,1-.33,0Z"/></svg>
+        <section class="form__group">
+          <div class="form__icon" >
+            <svg viewBox="0 0 24 24"><path d="M23,21.35V23H12V21.35ZM19.65,17,3.45,11.59a3.34,3.34,0,0,1-2.3-3.12L1,3.2,4.61,4.65l.82,2.52,3.15,1.3L8.63,1,12.3,2.48l2.13,8.11,2.81.91c2.05.72,3.45,1.82,3.5,4v.66A.81.81,0,0,1,20,17a.93.93,0,0,1-.33,0Z"/></svg>
+          </div>
           <div class="group__container">
             <label for="arrival" class="form__label">Arrival</label>
             <select id="arrival" class="form__input form__input--full">
@@ -41,38 +45,47 @@
                 <option value="Casablanca">Casablanca</option>
             </select>
           </div>
-        </div>
+        </section>
 
         <!-- Departure date -->
-        <div class="form__group form__group--full">
-          <label for="departure-date" class="form__label">Departure date</label>
-          <select id="departure-date" class="form__input form__input--half">
-            <option value="01-01-2019" selected>01-01-2021</option>
-            <option value="02-01-2021">02-01-2021</option>
-            <option value="03-01-2021">03-01-2021</option>
-            <option value="04-01-2021">04-01-2021</option>
-            <option value="05-01-2021">05-01-2021</option>
-            <option value="06-01-2021">06-01-2021</option>
-            <option value="07-01-2021">07-01-2021</option>
-            <option value="08-01-2021">08-01-2021</option>
-            <option value="09-01-2021">09-01-2021</option>
-            <option value="10-01-2021">10-01-2021</option>
-          </select> 
+        <section class="form__group form__group--full">
+          <div class="form__division">
+            <label for="departure-date" class="form__label">Departure date</label>
+            <select id="departure-date" class="form__input form__input--full">
+              <option value="01-01-2019" selected>01-01-2021</option>
+              <option value="02-01-2021">02-01-2021</option>
+              <option value="03-01-2021">03-01-2021</option>
+              <option value="04-01-2021">04-01-2021</option>
+              <option value="05-01-2021">05-01-2021</option>
+              <option value="06-01-2021">06-01-2021</option>
+              <option value="07-01-2021">07-01-2021</option>
+              <option value="08-01-2021">08-01-2021</option>
+              <option value="09-01-2021">09-01-2021</option>
+              <option value="10-01-2021">10-01-2021</option>
+            </select> 
+          </div>
 
           <!-- Return date -->
-          <label for="return-date" class="form__label">Return date</label>
-          <select id="return-date" class="form__input form__input--half">
-            <option value="02-02-2021" selected>02-02-2021</option>
-            <option value="03-02-2021">03-02-2021</option>
-            <option value="04-02-2021">04-02-2021</option>
-            <option value="05-02-2021">05-02-2021</option>
-            <option value="06-02-2021">06-02-2021</option>
-            <option value="07-02-2021">07-02-2021</option>
-            <option value="08-02-2021">08-02-2021</option>
-            <option value="09-02-2021">09-02-2021</option>
-            <option value="10-02-2021">10-02-2021</option>
-            <option value="11-02-2021">11-02-2021</option>
-          </select> 
+          <div class="form__division">
+            <label for="return-date" class="form__label">Return date</label>
+            <select id="return-date" class="form__input form__input--full">
+              <option value="02-02-2021" selected>02-02-2021</option>
+              <option value="03-02-2021">03-02-2021</option>
+              <option value="04-02-2021">04-02-2021</option>
+              <option value="05-02-2021">05-02-2021</option>
+              <option value="06-02-2021">06-02-2021</option>
+              <option value="07-02-2021">07-02-2021</option>
+              <option value="08-02-2021">08-02-2021</option>
+              <option value="09-02-2021">09-02-2021</option>
+              <option value="10-02-2021">10-02-2021</option>
+              <option value="11-02-2021">11-02-2021</option>
+            </select> 
+          </div>
+        </section>
+
+        <div class="">
+          <button class="btn" type="submit">Search</button>
+          <span class="loader-out hidden"><span class="loader-in"></span></span>
         </div>
 
     </form>
