@@ -24,6 +24,7 @@ button,
 textarea,
 select {
   font: inherit;
+  border: 0;
 }
 
 body {
@@ -81,4 +82,12 @@ body {
     &__submit {
         
     }
+
+    &__btn--submit {
+        width: 100%;
+    }
+}
+
+.btn {
+    padding: 0.4rem 2rem;
 }
