@@ -1,3 +1,22 @@
+const checkForPreviousFlights = function() {
+
+    if (localStorage.getItem('flightInformation')) {
+        
+        // Save previous flight information
+        const testData = JSON.parse(localStorage.getItem('flightInformation'));
+        
+        // Show it on the UI
+        document.querySelector('.search__departure').innerText = `${testData[0].departureLocation}`;
+        document.querySelector('.search__arrival').innerText = `${testData[0].arrivalLocation}`;
+        document.querySelector('.search__departure-date').innerText = `${testData[0].departureDate}`;
+        document.querySelector('.search__return-date').innerText = `${testData[0].returnDate}`;
+        
+    }
+
+};
+
+checkForPreviousFlights();
+
 document.querySelector('.form').addEventListener('submit', function(e) {
 
     e.preventDefault();
@@ -19,9 +38,9 @@ document.querySelector('.form').addEventListener('submit', function(e) {
 
     // Store data
     localStorage.setItem('flightInformation', JSON.stringify(flight));
-    
-    // Get data
-    const testData = JSON.parse(localStorage.getItem('flightInformation'));
+
+    // Reload page
+    window.location.reload();
 
 
 });
