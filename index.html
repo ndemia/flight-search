@@ -19,7 +19,7 @@
           </div>
           <div class="group__container">
             <label for="departure" class="form__label">Departure</label>
-            <select id="departure" class="form__input form__input--full">
+            <select id="departure" name="departure" class="form__input form__input--full" required>
                 <option value="Amsterdam">Amsterdam</option>
                 <option value="Cairo">Cairo</option>
                 <option value="New York">New York</option>
@@ -37,7 +37,7 @@
           </div>
           <div class="group__container">
             <label for="arrival" class="form__label">Arrival</label>
-            <select id="arrival" class="form__input form__input--full">
+            <select id="arrival" name="arrival" class="form__input form__input--full" required>
                 <option value="Rio de Janeiro">Rio de Janeiro</option>
                 <option value="Seattle">Seattle</option>
                 <option value="Stockholm">Stockholm</option>
@@ -52,7 +52,7 @@
         <section class="form__group form__group--full">
           <div class="form__division">
             <label for="departure-date" class="form__label">Departure date</label>
-            <select id="departure-date" class="form__input form__input--full">
+            <select id="departure-date" name="departure-date" class="form__input form__input--full" required>
               <option value="01-01-2019" selected>01-01-2021</option>
               <option value="02-01-2021">02-01-2021</option>
               <option value="03-01-2021">03-01-2021</option>
@@ -69,7 +69,7 @@
           <!-- Return date -->
           <div class="form__division">
             <label for="return-date" class="form__label">Return date</label>
-            <select id="return-date" class="form__input form__input--full">
+            <select id="return-date" name="return-date" class="form__input form__input--full" required>
               <option value="02-02-2021" selected>02-02-2021</option>
               <option value="03-02-2021">03-02-2021</option>
               <option value="04-02-2021">04-02-2021</option>
