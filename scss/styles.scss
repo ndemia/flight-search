@@ -51,8 +51,12 @@ body {
     color: white;
 }
 
-.form {
+.page {
     width: 300px;
+}
+
+.form {
+    margin-bottom: 2rem;
 
     &__group {
         display: flex;
@@ -119,6 +123,8 @@ body {
 }
 
 .search {
+    border-top: 1px solid #fff;
+
     &__header {
 
     }
