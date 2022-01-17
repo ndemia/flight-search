@@ -3,13 +3,13 @@ const checkForPreviousFlights = function() {
     if (localStorage.getItem('flightInformation')) {
         
         // Save previous flight information
-        const testData = JSON.parse(localStorage.getItem('flightInformation'));
+        const previousFlightSearches = JSON.parse(localStorage.getItem('flightInformation'));
         
         // Show it on the UI
-        document.querySelector('.search__departure').innerText = `${testData[0].departureLocation}`;
-        document.querySelector('.search__arrival').innerText = `${testData[0].arrivalLocation}`;
-        document.querySelector('.search__departure-date').innerText = `${testData[0].departureDate}`;
-        document.querySelector('.search__return-date').innerText = `${testData[0].returnDate}`;
+        document.querySelector('.search__departure').innerText = `${previousFlightSearches[0].departureLocation}`;
+        document.querySelector('.search__arrival').innerText = `${previousFlightSearches[0].arrivalLocation}`;
+        document.querySelector('.search__departure-date').innerText = `${previousFlightSearches[0].departureDate}`;
+        document.querySelector('.search__return-date').innerText = `${previousFlightSearches[0].returnDate}`;
         
     }
 
