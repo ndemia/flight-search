@@ -1,3 +1,15 @@
+// Change favicon according to theme
+const checkDarkMode = function () {
+
+	// In case browser's dark theme is enabled, returns boolean
+	let isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+	// If dark true, show white favicon
+	if (isDark) {
+		document.querySelector('link[type="image/svg+xml"]').href = 'favicon-white.svg';
+	}
+};
+
 const checkForPreviousFlights = function() {
 
     if (localStorage.getItem('flightInformation')) {
@@ -26,6 +38,10 @@ document.querySelector('.form').addEventListener('submit', function(e) {
     let departureDate = document.querySelector('#departure-date').value;
     let returnDate = document.querySelector('#return-date').value;
 
+    if(localStorage.getItem('flightInformation')) {
+        
+    }
+
     // Create flight information object
     const flight = [
         { 
@@ -44,3 +60,5 @@ document.querySelector('.form').addEventListener('submit', function(e) {
 
 
 });
+
+document.addEventListener('DOMContentLoaded', checkDarkMode());
