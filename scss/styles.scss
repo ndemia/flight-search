@@ -5,7 +5,6 @@
 }
 
 
-
 // CSS reset
 *,
 *::before,
@@ -113,9 +112,6 @@ body {
         width: 100%;
     }
 
-    &__btn--submit {
-        width: 100%;
-    }
 }
 
 .search {
@@ -128,9 +124,14 @@ body {
     &__results {
 
     }
+
+    &__departure, &__arrival, &__departure-date, &__return-date {
+        font-weight: 700;
+    }
 }
 
 .btn {
+    width: 100%;
     position: relative;
     top: 0;
     left: 0;
@@ -173,9 +174,11 @@ body {
     }
 
     &--secondary {
-        padding: 0.4rem 1rem;
-        font-size: 0.9rem;
-        background-color: unset;
-        color: #fff;
+
+    }
+
+    &--clear {
+        width: 100%;
+        margin-top: 1rem;
     }
 }

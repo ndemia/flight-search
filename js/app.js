@@ -1,7 +1,7 @@
 // Change favicon according to theme
 const checkDarkMode = function () {
 
-	// In case browser's dark theme is enabled, returns boolean
+	// Check that dark theme is enabled, returns boolean
 	let isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 	// If dark true, show white favicon
@@ -11,24 +11,41 @@ const checkDarkMode = function () {
 };
 
 
+const displayFlightInfo = function (flight) {
+
+    // Create previous flight search template to show in UI
+    const searchResultTemplate = 
+    `<div class="search__results">
+        <p>From <span class="search__departure">${flight.departureLocation}</span> to <span class="search__arrival">${flight.arrivalLocation}</span></p>
+        <p>From <span class="search__departure-date">${flight.departureDate}</span> to <span class="search__return-date">${flight.returnDate}</span></p>
+    </div>`;
+
+    // Insert results into UI
+    document.querySelector('.search__header').insertAdjacentHTML('afterend', searchResultTemplate);
+}
+
+
 const checkForPreviousFlights = function () {
 
     if (localStorage.getItem('flightInformation')) {
         
         // Save previous flight information
         let previousFlightSearches = JSON.parse(localStorage.getItem('flightInformation'));
-        
-        // Show it on the UI
-        document.querySelector('.search__departure').innerText = `${previousFlightSearches[0].departureLocation}`;
-        document.querySelector('.search__arrival').innerText = `${previousFlightSearches[0].arrivalLocation}`;
-        document.querySelector('.search__departure-date').innerText = `${previousFlightSearches[0].departureDate}`;
-        document.querySelector('.search__return-date').innerText = `${previousFlightSearches[0].returnDate}`;
+
+        // Reverse so that the first item is actually the last one that was searched for
+        previousFlightSearches.reverse();
+
+        previousFlightSearches.forEach(flight => {
+            
+            displayFlightInfo(flight);
+
+        });
         
     }
 
 };
 
-// Overall form behaviour
+
 document.querySelector('.form').addEventListener('submit', function(e) {
 
     e.preventDefault();

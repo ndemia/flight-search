@@ -22,7 +22,7 @@
         </div>
         <div class="group__container">
           <label for="departure" class="form__label">Departure</label>
-          <select id="departure" name="departure" class="form__input form__input--full" required>
+          <select id="departure" name="departure" class="form__input form__input--full">
               <option value="Amsterdam">Amsterdam</option>
               <option value="Cairo">Cairo</option>
               <option value="New York">New York</option>
@@ -35,12 +35,12 @@
 
       <!-- Arrival location -->
       <section class="form__group">
-        <div class="form__icon" >
+        <div class="form__icon">
           <svg viewBox="0 0 24 24"><path d="M23,21.35V23H12V21.35ZM19.65,17,3.45,11.59a3.34,3.34,0,0,1-2.3-3.12L1,3.2,4.61,4.65l.82,2.52,3.15,1.3L8.63,1,12.3,2.48l2.13,8.11,2.81.91c2.05.72,3.45,1.82,3.5,4v.66A.81.81,0,0,1,20,17a.93.93,0,0,1-.33,0Z"/></svg>
         </div>
         <div class="group__container">
           <label for="arrival" class="form__label">Arrival</label>
-          <select id="arrival" name="arrival" class="form__input form__input--full" required>
+          <select id="arrival" name="arrival" class="form__input form__input--full">
               <option value="Rio de Janeiro">Rio de Janeiro</option>
               <option value="Seattle">Seattle</option>
               <option value="Stockholm">Stockholm</option>
@@ -55,7 +55,7 @@
       <section class="form__group form__group--full">
         <div class="form__division">
           <label for="departure-date" class="form__label">Departure date</label>
-          <select id="departure-date" name="departure-date" class="form__input form__input--full" required>
+          <select id="departure-date" name="departure-date" class="form__input form__input--full">
             <option value="01-01-2019" selected>01-01-2021</option>
             <option value="02-01-2021">02-01-2021</option>
             <option value="03-01-2021">03-01-2021</option>
@@ -72,7 +72,7 @@
         <!-- Return date -->
         <div class="form__division">
           <label for="return-date" class="form__label">Return date</label>
-          <select id="return-date" name="return-date" class="form__input form__input--full" required>
+          <select id="return-date" name="return-date" class="form__input form__input--full">
             <option value="02-02-2021" selected>02-02-2021</option>
             <option value="03-02-2021">03-02-2021</option>
             <option value="04-02-2021">04-02-2021</option>
@@ -88,7 +88,7 @@
       </section>
 
       <section class="form__submit">
-        <button class="btn btn--primary form__btn--submit" type="submit">Search</button>
+        <button class="btn btn--primary btn--submit" type="submit">Search</button>
         <span class="loader-out hidden"><span class="loader-in"></span></span>
       </section>
     </form>
@@ -96,20 +96,8 @@
     <section class="search">
       <div class="search__header">
         <h2>Recent searches</h2>
-        <button class="btn btn--secondary btn--clear">Clear all</button>
       </div>
-      <div class="search__results">
-        <p><span class="search__departure"></span> to <span class="search__arrival"></span></p>
-        <p><span class="search__departure-date"></span> to <span class="search__return-date"></span></p>
-      </div>
-      <div class="search__results">
-        <p><span class="search__departure"></span> to <span class="search__arrival"></span></p>
-        <p><span class="search__departure-date"></span> to <span class="search__return-date"></span></p>
-      </div>
-      <div class="search__results">
-        <p><span class="search__departure"></span> to <span class="search__arrival"></span></p>
-        <p><span class="search__departure-date"></span> to <span class="search__return-date"></span></p>
-      </div>
+      <button class="btn btn--secondary btn--clear">Clear all</button>
     </section>
   </main>
     
