@@ -31,11 +31,8 @@ const checkForPreviousFlights = function () {
 
     if (localStorage.getItem('flightInformation')) {
         
-        // Save previous flight information
-        let previousFlightSearches = JSON.parse(localStorage.getItem('flightInformation'));
-
-        // Reverse so that the first item is actually the last one that was searched for
-        previousFlightSearches.reverse();
+        // Save previous flight searches, but only the last 3 searches
+        let previousFlightSearches = JSON.parse(localStorage.getItem('flightInformation')).slice(-3);
 
         previousFlightSearches.forEach(flight => {
             
