@@ -11,6 +11,7 @@ const checkDarkMode = function () {
 };
 
 
+
 const displayFlightInfo = function (flight) {
 
     // Create previous flight search template to show in UI
@@ -23,6 +24,7 @@ const displayFlightInfo = function (flight) {
     // Insert results into UI
     document.querySelector('.search__header').insertAdjacentHTML('afterend', searchResultTemplate);
 }
+
 
 
 const checkForPreviousFlights = function () {
@@ -40,10 +42,14 @@ const checkForPreviousFlights = function () {
             displayFlightInfo(flight);
 
         });
+
+        // Show the Recent searches section
+        document.querySelector('.search').classList.remove('hidden');
         
     }
 
 };
+
 
 
 document.querySelector('.form').addEventListener('submit', function(e) {
@@ -88,6 +94,8 @@ document.querySelector('.form').addEventListener('submit', function(e) {
     window.location.reload();
 
 });
+
+
 
 // Delete stored searches on request
 document.querySelector('.btn--clear').addEventListener('click', function() {
