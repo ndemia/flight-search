@@ -53,11 +53,10 @@ body {
 }
 
 .page {
-    width: 600px;
+    width: 300px;
 }
 
 .form {
-    width: 300px;
     margin-bottom: 2rem;
 
     &__group {
@@ -123,7 +122,6 @@ body {
 }
 
 .search {
-    width: 300px;
     border-top: 1px solid hsl(0, 0%, 100%);
 
     &__header {
