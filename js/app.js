@@ -17,8 +17,8 @@ const displayFlightInfo = function (flight) {
     // Create previous flight search template to show in UI
     const searchResultTemplate = 
     `<div class="search__results">
-        <p>From <span class="search__departure">${flight.departureLocation}</span> to <span class="search__arrival">${flight.arrivalLocation}</span></p>
-        <p>From <span class="search__departure-date">${flight.departureDate}</span> to <span class="search__return-date">${flight.returnDate}</span></p>
+        <p><span class="search__departure">${flight.departureLocation}</span>  >  <span class="search__arrival">${flight.arrivalLocation}</span></p>
+        <p><span class="search__departure-date">${flight.departureDate}</span> >  <span class="search__return-date">${flight.returnDate}</span></p>
     </div>`;
 
     // Insert results into UI
