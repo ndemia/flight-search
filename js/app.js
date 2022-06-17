@@ -70,11 +70,12 @@ const reloadPage = function () {
     setTimeout(() => {
         window.location.reload();
     }, '1500')
-}
+
+};
 
 
 
-document.querySelector('.form').addEventListener('click', function(e) {
+document.querySelector('.btn--submit').addEventListener('click', function(e) {
 
     e.preventDefault();
 
@@ -124,6 +125,7 @@ document.querySelector('.form').addEventListener('click', function(e) {
 
 // Delete stored searches on request
 document.querySelector('.btn--clear').addEventListener('click', function(e) {
+
 
     // Pass the event to detect the button in order to show the loader
     showLoader(e);
