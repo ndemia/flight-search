@@ -16,13 +16,13 @@ const displayFlightInfo = function (flight) {
 
     // Create previous flight search template to show in UI
     const searchResultTemplate = 
-    `<div class="search__results">
-        <p><span class="search__departure">${flight.departureLocation}</span>  >  <span class="search__arrival">${flight.arrivalLocation}</span></p>
-        <p><span class="search__departure-date">${flight.departureDate}</span> >  <span class="search__return-date">${flight.returnDate}</span></p>
+    `<div class="results__results">
+        <p><span class="results__departure">${flight.departureLocation}</span>  >  <span class="results__arrival">${flight.arrivalLocation}</span></p>
+        <p><span class="results__departure-date">${flight.departureDate}</span> >  <span class="results__return-date">${flight.returnDate}</span></p>
     </div>`;
 
     // Insert results into UI
-    document.querySelector('.search__header').insertAdjacentHTML('afterend', searchResultTemplate);
+    document.querySelector('.results__header').insertAdjacentHTML('afterend', searchResultTemplate);
 }
 
 
@@ -41,7 +41,7 @@ const checkForPreviousFlights = function () {
         });
 
         // Show the Recent searches section
-        document.querySelector('.search').classList.remove('hidden');
+        document.querySelector('.results').classList.remove('hidden');
         
     }
 
@@ -49,9 +49,37 @@ const checkForPreviousFlights = function () {
 
 
 
-document.querySelector('.form').addEventListener('submit', function(e) {
+const showLoader = function (e) {
+
+    // Detect which button was clicked in order to make the changes necessary to show the loader
+    let clickedButton = e.target;
+    
+    clickedButton.setAttribute('style', 'width: 85%');
+
+    // Delay the appeareance of the loader a bit to avoid it being showed over the button
+    setTimeout(() => {
+        clickedButton.nextElementSibling.setAttribute('style', 'display: inline-block');
+    }, '200')
+
+}
+
+
+
+const reloadPage = function () {
+
+    setTimeout(() => {
+        window.location.reload();
+    }, '1500')
+}
+
+
+
+document.querySelector('.form').addEventListener('click', function(e) {
 
     e.preventDefault();
+
+    // Pass the event to detect the button in order to show the loader
+    showLoader(e);
     
     let departureLocation = document.querySelector('#departure').value;
     let arrivalLocation = document.querySelector('#arrival').value;
@@ -88,19 +116,22 @@ document.querySelector('.form').addEventListener('submit', function(e) {
     }
 
     // Reload page after submit
-    window.location.reload();
+    reloadPage();
 
 });
 
 
 
 // Delete stored searches on request
-document.querySelector('.btn--clear').addEventListener('click', function() {
+document.querySelector('.btn--clear').addEventListener('click', function(e) {
+
+    // Pass the event to detect the button in order to show the loader
+    showLoader(e);
 
     localStorage.clear();
 
     // Reload page after deleting
-    window.location.reload();
+    reloadPage();
 
 });
 
