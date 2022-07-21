@@ -90,6 +90,11 @@ body {
         &:first-child {
             margin-right: 1rem;
         }
+
+
+        select {
+            background-position: 94% center;
+        }
     }
 
     &__label {
@@ -113,7 +118,7 @@ body {
 
 
         &:hover, &:focus {
-            box-shadow: 0 0 0 5px hsl(235, 21%, 21%);
+            box-shadow: 0 0 0 3px hsl(235, 21%, 21%);
         }
     }   
             
@@ -190,9 +195,14 @@ body {
     border-radius: 6px;
     cursor: pointer;
     transition: all 200ms ease-in-out;
+    color: hsl(235, 21%, 21%);
 
-    &:hover, &:focus {
+    &:hover {
         background-color: hsl(202, 45%, 72%);
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 3px hsl(235, 21%, 21%);
     }
 
     &:active {
