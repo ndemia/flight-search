@@ -16,9 +16,17 @@ const displayFlightInfo = function (flight) {
 
     // Create previous flight search template to show in UI
     const searchResultTemplate = 
-    `<div class="results__results">
-        <p><span class="results__departure">${flight.departureLocation}</span>  >  <span class="results__arrival">${flight.arrivalLocation}</span></p>
-        <p><span class="results__departure-date">${flight.departureDate}</span> >  <span class="results__return-date">${flight.returnDate}</span></p>
+    `<div class="results__container">
+        <p class="results__locations">
+            <span class="results__departure">${flight.departureLocation}</span>
+            >
+            <span class="results__arrival">${flight.arrivalLocation}</span>
+        </p>
+        <p class="results__dates">
+            <span class="results__departure-date">${flight.departureDate}</span>
+            >
+            <span class="results__return-date">${flight.returnDate}</span>
+        </p>
     </div>`;
 
     // Insert results into UI
@@ -125,7 +133,6 @@ document.querySelector('.btn--submit').addEventListener('click', function(e) {
 
 // Delete stored searches on request
 document.querySelector('.btn--clear').addEventListener('click', function(e) {
-
 
     // Pass the event to detect the button in order to show the loader
     showLoader(e);

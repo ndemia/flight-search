@@ -39,6 +39,8 @@ select {
   border: 0;
 }
 
+
+
 // Main styles
 body {
     display: flex;
@@ -164,9 +166,12 @@ body {
         margin-bottom: 0.5rem;
     }
 
-    &__results {
-        margin-top: 0.75rem;
-        padding-top: 0.25rem;
+    &__container {
+        background-color: hsla(0, 0%, 100%, 0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        margin-top: 1rem;
+        text-align: center;
     }
 
     &__actions {
@@ -178,8 +183,29 @@ body {
         margin-top: 2rem;
     }
 
+    &__locations, &__dates {
+        display: inline-block;
+    }
+
+    &__locations {
+        border-bottom: 1px solid hsla(0, 0%, 100%, 0.6);
+        padding-bottom: 0.25rem;
+    }
+
+    &__dates {
+        padding-top: 0.25rem;
+    }
+
     &__departure, &__arrival, &__departure-date, &__return-date {
-        font-weight: 400;
+        font-weight: 700;
+    }
+
+    &__departure, &__departure-date {
+        margin-right: 0.25rem;
+    }
+
+    &__arrival, &__return-date {
+        margin-left: 0.25rem;
     }
 }
 
