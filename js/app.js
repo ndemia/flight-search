@@ -77,7 +77,7 @@ const reloadPage = function () {
 
     setTimeout(() => {
         window.location.reload();
-    }, '1500')
+    }, '2000')
 
 };
 
