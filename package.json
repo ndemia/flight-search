@@ -4,5 +4,20 @@
   },
   "dependencies": {
     "sass": "^1.52.1"
-  }
+  },
+  "name": "flight-search",
+  "description": "Flight search prototype from a failed interview test.",
+  "version": "1.0.0",
+  "main": "index.html",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ndemia/flight-search.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ndemia/flight-search/issues"
+  },
+  "homepage": "https://github.com/ndemia/flight-search#readme"
 }
