@@ -6,4 +6,4 @@ I found out that the airline website used localStorage to save previously search
 
 So to practice, and for fun, I'm replicating a dummy version of that test.
 
-https://ndemia.github.io/failed-interview-one/
+https://ndemia.github.io/flight-search/
