@@ -1,35 +1,77 @@
-// Flight object
-interface flight { 
-  departureLocation: string, 
-  arrivalLocation: string, 
-  departureDate: string, 
-  returnDate: string 
-};
+import { flight } from './flight';
+
+
+// App
+document.querySelector('.btn--submit')!.addEventListener('click', function(e: Event) {
+
+  e.preventDefault();
+
+  // Pass the event so that the showLoader can detect the button next to which the loader will appear
+  showLoader(e);
+  
+  let flightSearches: {}[] = [];
+  let flightData = getFlightData();
+  let previousFlights = checkForPreviousFlights();
+
+  // Check if previous flight searches have been made, so that we will add to them instead of overwrite them
+  if (previousFlights === true) {
+      
+      // Save those previous searches as array
+      flightSearches = JSON.parse(localStorage.getItem('flightSearches')!);
+      
+      flightSearches.push(flightData);
+      
+      localStorage.setItem('flightSearches', JSON.stringify(flightSearches));
+
+  } else {
+
+    flightSearches.push(flightData);
+
+    localStorage.setItem('flightSearches', JSON.stringify(flightSearches));
+
+  }
+
+  reloadPage();
+
+});
 
 
 
+// Delete stored searches on request
+document.querySelector('.btn--clear')!.addEventListener('click', function(e: Event) {
+
+  showLoader(e);
+
+  localStorage.clear();
+
+  reloadPage();
+
+});
+
+document.addEventListener('DOMContentLoaded', checkDarkMode);
+document.addEventListener('DOMContentLoaded', checkAndShowPreviousFlights);
+
+
+
+// Function declarations
 // Change favicon according to theme
-function checkDarkMode (): void {
+function checkDarkMode(): void {
 
   const favicon = document.querySelector<HTMLLinkElement>('link[type="image/svg+xml"]');
 
-	// Check if dark theme is enabled, returns boolean
 	let isDark: boolean = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-	// If dark theme is enabled, then show the white favicon
 	if (isDark && favicon) {
 		favicon.href = 'favicon-white.svg';
 	}
-};
+}
 
 
 
-function showLoader (e: Event) {
-
-  const loader = document.querySelector('.loader');
-
-  // Detect which button was clicked in order to make the changes necessary to show the loader
+function showLoader(e: Event): void {
+  
   const clickedButton = e.target as HTMLButtonElement;
+  const loader = clickedButton.nextElementSibling;
 
   if (clickedButton) {
     clickedButton.setAttribute('style', 'width: 85%');
@@ -41,48 +83,66 @@ function showLoader (e: Event) {
         loader.setAttribute('style', 'display: inline-block');
     }, 200)
   }
-};
+}
 
 
 
-function reloadPage () {
+function reloadPage(): void {
 
   setTimeout(() => {
       window.location.reload();
-  }, 2000);
+  }, 3000);
 
-};
+}
 
 
 
-function checkForPreviousFlights () {
+function checkAndShowPreviousFlights(): void | boolean {
+  
+  if (checkForPreviousFlights() === true) {
+    showPreviousFlights(getPreviousFlights());
+  } else {
+    return false;
+  }
+}
 
-  let previousFlightSearches = localStorage.getItem('flightInformation');
+
+
+function checkForPreviousFlights(): boolean {
+  let result = (localStorage.getItem('flightSearches') !== null) ? true : false;
+  return result;
+}
+
+
+
+function getPreviousFlights(): [] {
+
+  let previousFlightSearches = localStorage.getItem('flightSearches');
+  let previousFlightSearchesArr: [] = [];
 
   if (previousFlightSearches !== null) {
-      
+  
     // Return only the last 3 searches
-    previousFlightSearches = JSON.parse(previousFlightSearches).slice(-3);
-
+    previousFlightSearchesArr = JSON.parse(previousFlightSearches).slice(-3);
   }
+  
+  return previousFlightSearchesArr;
+}
 
-  return previousFlightSearches;
-};
 
 
-
-function showPreviousFlights (flights): void {
+function showPreviousFlights(flights: []): void {
 
   flights.forEach((flight: flight) => {
     document.querySelector('.results__header')!.insertAdjacentHTML('afterend', createFlightDataTemplate(flight));
   });
 
   document.querySelector('.results')!.classList.remove('hidden');
-};
+}
 
 
 
-function createFlightDataTemplate (flightData: flight): string {
+function createFlightDataTemplate(flightData: flight): string {
 
   // Create flight template to show in UI
   const flightDataTemplate = 
@@ -100,11 +160,11 @@ function createFlightDataTemplate (flightData: flight): string {
   </div>`;
 
   return flightDataTemplate;
-};
+}
 
 
 
-function getFlightData (): flight {
+function getFlightData(): flight {
 
   // Non-null assertion because we know these inputs exist
   let departureLocation = document.querySelector<HTMLSelectElement>('#departure')!.value;
@@ -122,61 +182,4 @@ function getFlightData (): flight {
   };
 
   return flightData;
-};
-
-
-
-document.querySelector('.btn--submit')!.addEventListener('click', function(e) {
-
-  e.preventDefault();
-
-  // Pass the event to detect the button in order to show the loader
-  showLoader(e);
-  
-  // Create flight information object that will store the flight search information
-  let flightData = getFlightData();
-  let flightInformation: {}[] = [];
-
-  // Check if previous flight searches have been made, so that we will add to them instead of overwrite them
-  if (checkForPreviousFlights() !== null) {
-      
-      // Save those previous searches as array
-      let previousFlights = JSON.parse(localStorage.getItem('flightInformation'));
-      
-      /* We add the new search to it. I reference the index so that way only the object inside the array is added, and not the whole array. 
-      This way I avoidadding unnecessary brackets to the string that will later be stored */
-      previousFlights.push(flightData);
-      
-      localStorage.setItem('flightInformation', JSON.stringify(previousFlights));
-
-  } else {
-
-    flightInformation.push(flightData)
-
-    // If no previous searches have been stored, just proceed with saving the current one
-    localStorage.setItem('flightInformation', JSON.stringify(flightInformation));
-
-  }
-
-  // Reload page after submit
-  reloadPage();
-
-});
-
-
-
-// Delete stored searches on request
-document.querySelector('.btn--clear')!.addEventListener('click', function(e) {
-
-  // Pass the event to detect the button in order to show the loader
-  showLoader(e);
-
-  localStorage.clear();
-
-  // Reload page after deleting
-  reloadPage();
-
-});
-
-document.addEventListener('DOMContentLoaded', checkDarkMode);
-document.addEventListener('DOMContentLoaded', checkForPreviousFlights);
+}
