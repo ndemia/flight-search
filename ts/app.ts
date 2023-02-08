@@ -6,6 +6,8 @@ document.querySelector('.btn--submit')!.addEventListener('click', function(e: Ev
 
   e.preventDefault();
 
+  disableButtons();
+
   // Pass the event so that the showLoader can detect the button next to which the loader will appear
   showLoader(e);
   
@@ -40,6 +42,8 @@ document.querySelector('.btn--submit')!.addEventListener('click', function(e: Ev
 // Delete stored searches on request
 document.querySelector('.btn--clear')!.addEventListener('click', function(e: Event) {
 
+  disableButtons();
+
   showLoader(e);
 
   localStorage.clear();
@@ -54,49 +58,6 @@ document.addEventListener('DOMContentLoaded', checkAndShowPreviousFlights);
 
 
 // Function declarations
-// Change favicon according to theme
-function checkDarkMode(): void {
-
-  const favicon = document.querySelector<HTMLLinkElement>('link[type="image/svg+xml"]');
-
-	let isDark: boolean = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-	if (isDark && favicon) {
-		favicon.href = 'favicon-white.svg';
-	}
-}
-
-
-
-function showLoader(e: Event): void {
-  
-  const clickedButton = e.target as HTMLButtonElement;
-  const loader = clickedButton.nextElementSibling;
-
-  if (clickedButton) {
-    clickedButton.setAttribute('style', 'width: 85%');
-  }
-  
-  // Delay the appeareance of the loader a bit to avoid it being showed over the button while it shortens its width
-  if (loader != null) {
-    setTimeout(() => {
-        loader.setAttribute('style', 'display: inline-block');
-    }, 200)
-  }
-}
-
-
-
-function reloadPage(): void {
-
-  setTimeout(() => {
-      window.location.reload();
-  }, 3000);
-
-}
-
-
-
 function checkAndShowPreviousFlights(): void | boolean {
   
   if (checkForPreviousFlights() === true) {
@@ -144,7 +105,6 @@ function showPreviousFlights(flights: []): void {
 
 function createFlightDataTemplate(flightData: flight): string {
 
-  // Create flight template to show in UI
   const flightDataTemplate = 
   `<div class="results__container">
     <p class="results__locations" >
@@ -182,4 +142,56 @@ function getFlightData(): flight {
   };
 
   return flightData;
+}
+
+
+
+// Change favicon according to theme
+function checkDarkMode(): void {
+
+  const favicon = document.querySelector<HTMLLinkElement>('link[type="image/svg+xml"]');
+
+	let isDark: boolean = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+	if (isDark && favicon) {
+		favicon.href = 'favicon-white.svg';
+	}
+}
+
+
+
+function showLoader(e: Event): void {
+  
+  const clickedButton = e.target as HTMLButtonElement;
+  const loader = clickedButton.nextElementSibling;
+
+  if (clickedButton) {
+    clickedButton.setAttribute('style', 'width: 85%');
+  }
+  
+  // Delay the appeareance of the loader a bit to avoid it being showed over the button while it shortens its width
+  if (loader != null) {
+    setTimeout(() => {
+        loader.setAttribute('style', 'display: inline-block');
+    }, 200)
+  }
+}
+
+
+
+function reloadPage(): void {
+
+  setTimeout(() => {
+      window.location.reload();
+  }, 3000);
+
+}
+
+
+
+function disableButtons(): void {
+  document.querySelectorAll('.btn').forEach((button) => {
+    button.classList.add('btn--disabled');
+    button.setAttribute('disabled', 'true');
+  });
 }
