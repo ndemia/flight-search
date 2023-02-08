@@ -18,7 +18,7 @@
       <!-- Departure location -->
       <section class="form__group">
         <div class="form__icon">
-          <svg  viewBox="0 0 24 24"><path d="M12.77,20.14v1.53H2.55V20.14ZM22.5,8.4,7.59,13.93A3.11,3.11,0,0,1,4.11,13L1,9.4l3.43-1L6.5,9.74l3-.9L5.24,3.38l3.52-1L15,7l2.55-1c1.91-.68,3.53-.86,4.83.7l.39.46a.76.76,0,0,1-.07,1.08.68.68,0,0,1-.26.15Z"/></svg>
+          <svg viewBox="0 0 24 24" alt=""><path d="M12.77,20.14v1.53H2.55V20.14ZM22.5,8.4,7.59,13.93A3.11,3.11,0,0,1,4.11,13L1,9.4l3.43-1L6.5,9.74l3-.9L5.24,3.38l3.52-1L15,7l2.55-1c1.91-.68,3.53-.86,4.83.7l.39.46a.76.76,0,0,1-.07,1.08.68.68,0,0,1-.26.15Z"/></svg>
         </div>
         <div class="group__container">
           <label for="departure" class="form__label">Departure</label>
@@ -56,7 +56,7 @@
         <div class="form__division">
           <label for="departure-date" class="form__label">Departure date</label>
           <select id="departure-date" name="departure-date" class="form__input form__input--full">
-            <option value="01-01-2019" selected>01-01-2021</option>
+            <option value="01-01-2021" selected>01-01-2021</option>
             <option value="02-01-2021">02-01-2021</option>
             <option value="03-01-2021">03-01-2021</option>
             <option value="04-01-2021">04-01-2021</option>
@@ -88,9 +88,9 @@
       </section>
 
       <!-- Form submit -->
-      <section class="form__submit">
+      <section class="form__submit" aria-live="polite">
         <button class="btn btn--primary btn--submit" type="submit">Search flights</button>
-        <span class="form__loader loader"></span>
+        <span class="form__loader loader" role="alert" title="Search in progress"></span>
       </section>
     </form>
 
@@ -100,9 +100,9 @@
       <div class="results__header">
         <h2 class="results__title">Recent searches</h2>
       </div>
-      <div class="results__actions">
-        <button class="btn btn--secondary btn--clear">Clear all searches</button>
-        <span class="results__loader loader"></span>
+      <div class="results__actions" aria-live="polite">
+        <button class="btn btn--secondary btn--clear">Clear previous searches</button>
+        <span class="results__loader loader" role="alert" title="Clearing searches"></span>
       </div>
     </section>
   </main>
