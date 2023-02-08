@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "sass-dev": "sass --watch --update --style=compressed --no-source-map scss:css"
+    "build-sass": "sass --watch --update --style=compressed --no-source-map scss:css"
   },
   "dependencies": {
     "sass": "^1.52.1"
