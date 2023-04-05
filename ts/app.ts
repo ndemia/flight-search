@@ -1,17 +1,14 @@
 import { flight } from './flight';
 
-// Functions
-function checkAndShowPreviousFlights(): void | boolean {
-  if (checkForPreviousFlights() === true) {
-    showPreviousFlights(getPreviousFlights());
-  } else {
-    return false;
-  }
-}
-
 function checkForPreviousFlights(): boolean {
   let result = (localStorage.getItem('flightSearches') !== null) ? true : false;
   return result;
+}
+
+function showFlights(): void {
+  if (checkForPreviousFlights() === true) {
+    showPreviousFlights(getPreviousFlights());
+  }
 }
 
 function getPreviousFlights(): [] {
@@ -48,13 +45,11 @@ function createFlightDataTemplate(flightData: flight): string {
   return flightDataTemplate;
 }
 
-function getFlightData(): flight {
-  // Non-null assertion because we know these inputs exist
+function createFlightData(): flight {
   let departureLocation = document.querySelector<HTMLSelectElement>('#departure')!.value;
   let arrivalLocation = document.querySelector<HTMLSelectElement>('#arrival')!.value;
   let departureDate = document.querySelector<HTMLSelectElement>('#departure-date')!.value;
   let returnDate = document.querySelector<HTMLSelectElement>('#return-date')!.value;
-  // Define flight object that stores the flight data (locations, dates)
   const flightData: flight = {
     departureLocation: departureLocation,
     arrivalLocation: arrivalLocation,
@@ -66,25 +61,46 @@ function getFlightData(): flight {
 
 // Change favicon according to theme
 function checkDarkMode(): void {
-  const favicon = document.querySelector<HTMLLinkElement>('link[type="image/svg+xml"]');
+  let favicon = document.querySelector<HTMLLinkElement>('link[type="image/svg+xml"]');
   let isDark: boolean = window.matchMedia('(prefers-color-scheme: dark)').matches;
   if (isDark && favicon) {
     favicon.href = 'favicon-white.svg';
   }
 }
 
-function showLoader(e: Event): void {
-  const clickedButton = e.target as HTMLButtonElement;
-  const loader = clickedButton.nextElementSibling;
-  if (clickedButton) {
-    clickedButton.setAttribute('style', 'width: 85%');
-  }
+// function disableButtons(): void {
+//   document.querySelectorAll('.btn').forEach((button) => {
+//     button.classList.add('btn--disabled');
+//     button.setAttribute('disabled', 'true');
+//   });
+// }
+
+// function showLoader(e: Event): void {
+//   let clickedButton = e.target as HTMLButtonElement;
+//   let loader = clickedButton.nextElementSibling as HTMLSpanElement;
+//   clickedButton.setAttribute('style', 'width: 85%');
+//   // Delay the appeareance of the loader a bit to avoid it being showed over the button while it shortens its width
+//   if (loader != null) {
+//     setTimeout(() => {
+//       loader.setAttribute('style', 'display: inline-block');
+//     }, 200)
+//   }
+// }
+
+function stopInteractions(e: Event): void {
+  // Disable buttons
+  document.querySelectorAll('.btn').forEach((button) => {
+    button.classList.add('btn--disabled');
+    button.setAttribute('disabled', 'true');
+  });
+  // Show loader
+  let clickedButton = e.target as HTMLButtonElement;
+  let loader = clickedButton.nextElementSibling as HTMLSpanElement;
+  clickedButton.setAttribute('style', 'width: 85%');
   // Delay the appeareance of the loader a bit to avoid it being showed over the button while it shortens its width
-  if (loader != null) {
-    setTimeout(() => {
-      loader.setAttribute('style', 'display: inline-block');
-    }, 200)
-  }
+  setTimeout(() => {
+    loader.setAttribute('style', 'display: inline-block');
+  }, 200)
 }
 
 function reloadPage(): void {
@@ -93,21 +109,11 @@ function reloadPage(): void {
   }, 3000);
 }
 
-function disableButtons(): void {
-  document.querySelectorAll('.btn').forEach((button) => {
-    button.classList.add('btn--disabled');
-    button.setAttribute('disabled', 'true');
-  });
-}
-
-// App
 document.querySelector('.btn--submit')!.addEventListener('click', function (e: Event) {
   e.preventDefault();
-  disableButtons();
-  // Pass the event so that the showLoader can detect the button next to which the loader will appear
-  showLoader(e);
+  stopInteractions(e);
   let flightSearches: {}[] = [];
-  let flightData = getFlightData();
+  let flightData = createFlightData();
   let previousFlights = checkForPreviousFlights();
   // Check if previous flight searches have been made, so that we will add to them instead of overwrite them
   if (previousFlights === true) {
@@ -124,11 +130,10 @@ document.querySelector('.btn--submit')!.addEventListener('click', function (e: E
 
 // Delete stored searches on request
 document.querySelector('.btn--clear')!.addEventListener('click', function (e: Event) {
-  disableButtons();
-  showLoader(e);
+  stopInteractions(e);
   localStorage.clear();
   reloadPage();
 });
 
 document.addEventListener('DOMContentLoaded', checkDarkMode);
-document.addEventListener('DOMContentLoaded', checkAndShowPreviousFlights);
+document.addEventListener('DOMContentLoaded', showFlights);
