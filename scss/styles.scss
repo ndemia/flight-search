@@ -114,7 +114,7 @@ body {
 
 		&:hover,
 		&:focus {
-			box-shadow: 0 0 0 4px hsl(235, 21%, 21%);
+			box-shadow: 0 0 0 4px hsl(235, 30%, 80%);
 		}
 	}
 
@@ -230,11 +230,13 @@ body {
 	}
 
 	&:focus {
-		box-shadow: 0 0 0 3px hsl(235, 21%, 21%);
+		box-shadow: 0 0 0 3px hsl(235, 30%, 80%);
+		background-color: hsl(202, 45%, 50%);
 	}
 
 	&:active {
-		background-color: hsl(202, 45%, 50%);
+		background-color: hsl(202, 45%, 30%);
+		color: hsl(0, 0%, 100%);
 		top: 6px;
 		left: 6px;
 
