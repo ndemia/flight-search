@@ -1,4 +1,4 @@
-# Flight search (Failed interview test, volume 1)
+# Flight search (Interview test, volume 1)
 ![picture](https://demia.me/assets/images/flight_x2.png)
 
 ## Context
