@@ -2,10 +2,10 @@
 ![picture](https://demia.me/assets/images/flight_x2.png)
 
 ## Context
-The first installment in my series of interview test. As part of the process for a role at a digital marketing agency, they gave me the website of an airline to work on. The task was to create a program that would check the flights that the user had previously searched for, and display the last 3 the next time it loaded. The main condition was that the code had to work from the console, like it was injected. This assignment relied on another website, so I decided to replicate it as a way to practice, and to improve my initial solution. 
+As part of the process for a role at a digital marketing agency, they gave me the website of an airline to work on. The task was to create a program that would check the flights that the user had previously searched for, and display the last 3 the next time it loaded. The main condition was that the code had to work from the console, like it was injected. This assignment relied on another website, and I decided to replicate it as a way to practice to improve my initial solution, despite this not being exactly the same.
 
 ## Requirements
-- The assignment was meant to be completed with JavaScript, and it had to work by being run from the browser's console.
+- To be completed with JavaScript, and it had to work from the browser's console.
 - The results' design should fit in with the rest of the website.
 
 ## Tech stack
